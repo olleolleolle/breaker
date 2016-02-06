@@ -62,7 +62,7 @@ end
 ```
 
 `Breaker.circuit` returns `Breaker::Circuit` instances which can be
-saved for later. There use depends no how persistence works.
+saved for later. Their use depends on how persistence works.
 
 ## Persistence
 
@@ -70,17 +70,17 @@ Circuit breakers are only really useful in a large system (perhaps
 distributed). Some information must be shared acrosss subsystems. Say
 there are 5 different services in the system. Each is
 talking to 2 different systems protected by circuit breakers. Either
-of the systems go down. It's natural that the failure should propogate
+of the systems go down. It's natural that the failure should propagate
 through the system so that each service knows the shared ones are
 down. This is where state and persistence come into play.
 
-The breaker gems bundles a simple in memory repository. This is
-process specific. If you need to share state across multiple processes
+The breaker gems bundles a simple in-memory repository. This is
+process-specific. If you need to share state across multiple processes
 then you must write your own repository.
 
-The repository manages fueses (in the eletrical sense). A fuse
+The repository manages fuses (in the electrical sense). A fuse
 maintains state. The repository must implement one method: `upsert`
-which creates or updates a fuse given by name. The repistory can
+which creates or updates a fuse given by name. The repository can
 return some sort of persistent fuse where writer methods write to
 persistent storage.
 
